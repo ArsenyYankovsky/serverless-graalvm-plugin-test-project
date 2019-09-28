@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-serverless-graalvm-plugin@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/serverless-graalvm-plugin/-/serverless-graalvm-plugin-1.0.3.tgz#f281abdf930d53354e311b3c9b46a3dc9fe3156a"
-  integrity sha512-llw3NvmJYfRHGDh/1FXSPDwuKLbuvkj11CevYiQ+CR8EP29n5T1umfKs8AaQFfDBOCZjDpL/jxORgqa+Ba/g/A==
+serverless-graalvm-plugin@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/serverless-graalvm-plugin/-/serverless-graalvm-plugin-1.0.4.tgz#2a6fd46ede7f3a5703c287256336ca03caaa82c7"
+  integrity sha512-T9lzwdaLtrIVloLKTtJanX0pJEej5n18fcBGZaNpupc1pyYTjUb/UuZa0y3LEoC2X7zLRCGijPTJj3AbspjF4A==
