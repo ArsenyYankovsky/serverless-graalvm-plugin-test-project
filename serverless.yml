@@ -1,0 +1,29 @@
+service: serverless-graalvm-plugin-test-project # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: java8
+  region: eu-north-1
+
+plugins:
+  - serverless-graalvm-plugin
+
+package:
+  individually: true
+
+functions:
+  hello-api-gateway:
+    handler: not.used
+    runtime: provided
+    events:
+      - http:
+          path: hello
+          method: get
+    package:
+      artifact: build/libs/api-gateway.jar
+
+  hello-direct:
+    runtime: provided
+    handler: not.used
+    package:
+      artifact: build/libs/direct-invocation.jar

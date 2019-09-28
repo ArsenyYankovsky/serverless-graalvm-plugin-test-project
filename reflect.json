@@ -1,0 +1,17 @@
+[
+  {
+    "name": "com.serverless.ApiGatewayResponse",
+    "allPublicConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "java.util.LinkedHashMap",
+    "allPublicConstructors": true,
+    "allPublicMethods": true
+  },
+  {
+    "name": "com.serverless.Response",
+    "allPublicConstructors": true,
+    "allPublicMethods": true
+  }
+]
