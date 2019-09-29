@@ -2,7 +2,14 @@
 # yarn lockfile v1
 
 
-serverless-graalvm-plugin@^1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/serverless-graalvm-plugin/-/serverless-graalvm-plugin-1.0.4.tgz#2a6fd46ede7f3a5703c287256336ca03caaa82c7"
-  integrity sha512-T9lzwdaLtrIVloLKTtJanX0pJEej5n18fcBGZaNpupc1pyYTjUb/UuZa0y3LEoC2X7zLRCGijPTJj3AbspjF4A==
+lignator@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/lignator/-/lignator-1.0.2.tgz#70d100a4680666d79279c5f6d88a7bb264bfa9df"
+  integrity sha512-TzAlKJ0d53kfmVmY4355rjcGvJsqgMV9UbV+bM3iPXwNosOHefCSkrnNpU/c/kVBqw7AjIlXlsHjaldrEsPnCQ==
+
+serverless-graalvm-plugin@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/serverless-graalvm-plugin/-/serverless-graalvm-plugin-1.0.5.tgz#f917bd6dae7339e2b918548203f575cfdd33708c"
+  integrity sha512-ANe+nuAgSQ9q84mxhBU0AUWOs4MKbSXZYMCpmD/TSCAGK/ACpVHLtcBbNnwZq3lOI1jzpjFBh37xVkoWt4lnnA==
+  dependencies:
+    lignator "^1.0.2"
