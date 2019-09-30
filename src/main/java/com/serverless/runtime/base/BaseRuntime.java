@@ -17,7 +17,7 @@ public abstract class BaseRuntime<I, O> {
         return conn;
     }
 
-    protected void postToUrl(String urlString, String contents) throws IOException {
+    protected String postToUrl(String urlString, String contents) throws IOException {
         URL url = new URL(urlString);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setDoOutput(true);
@@ -25,6 +25,7 @@ public abstract class BaseRuntime<I, O> {
         conn.connect();
         conn.getOutputStream().write(contents.getBytes(StandardCharsets.UTF_8));
         conn.getOutputStream().close();
+        return inputStreamToString(conn.getInputStream());
     }
 
     protected String inputStreamToString(InputStream inputStream) throws IOException {
