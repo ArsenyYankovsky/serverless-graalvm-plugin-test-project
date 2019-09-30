@@ -71,29 +71,40 @@ public abstract class BaseRuntime<I, O> {
     protected abstract RequestHandler<I, O> createHandler();
 
     public void start() {
-        RequestHandler<I, O> handler = createHandler();
+        try {
+            RequestHandler<I, O> handler = createHandler();
 
-        while (true) {
-            try {
+            while (true) {
                 Invocation nextInvocation = getNextInvocation();
-                System.out.println("Request: " + nextInvocation.getBody());
-
-                I request = deserializeRequest(nextInvocation.getBody());
-
-                O response = handler.handleRequest(request, null);
-
-                String responseString = serializeResponse(response);
-                postToUrl("http://" +
-                                nextInvocation.getRuntimeApiEndpoint() +
-                                "/2018-06-01/runtime/invocation/" +
-                                nextInvocation.getRequestId() +
-                                "/response"
-                        , responseString);
-                System.out.println("Finished responding");
-
-            } catch (Throwable t) {
-                t.printStackTrace();
+                processInvocation(handler, nextInvocation);
             }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected void processInvocation(RequestHandler<I, O> handler, Invocation nextInvocation) throws IOException {
+        try {
+            I request = deserializeRequest(nextInvocation.getBody());
+
+            O response = handler.handleRequest(request, null);
+
+            String responseString = serializeResponse(response);
+            postToUrl("http://" +
+                            nextInvocation.getRuntimeApiEndpoint() +
+                            "/2018-06-01/runtime/invocation/" +
+                            nextInvocation.getRequestId() +
+                            "/response",
+                    responseString);
+        } catch (Throwable t) {
+            t.printStackTrace();
+            postToUrl("http://" +
+                            nextInvocation.getRuntimeApiEndpoint() +
+                            "/2018-06-01/runtime/invocation/" +
+                            nextInvocation.getRequestId() +
+                            "/error",
+                    t.getMessage()
+            );
         }
     }
 }
