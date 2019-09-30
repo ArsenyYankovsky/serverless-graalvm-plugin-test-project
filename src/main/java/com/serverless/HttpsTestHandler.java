@@ -8,11 +8,10 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
 
-public class HttpsTestHandler implements RequestHandler<Void, ApiGatewayResponse> {
+public class HttpsTestHandler implements RequestHandler<Void, String> {
     @Override
-    public ApiGatewayResponse handleRequest(Void input, Context context) {
+    public String handleRequest(Void input, Context context) {
         try {
             URL url = new URL("https://fj2fsn84tg.execute-api.eu-north-1.amazonaws.com/dev/hello");
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -21,12 +20,7 @@ public class HttpsTestHandler implements RequestHandler<Void, ApiGatewayResponse
 
             String body = inputStreamToString(is);
 
-            Response responseBody = new Response(body);
-            return ApiGatewayResponse.builder()
-                    .setStatusCode(200)
-                    .setObjectBody(responseBody)
-                    .setHeaders(Collections.singletonMap("X-Powered-By", "AWS Lambda & serverless"))
-                    .build();
+            return body;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
