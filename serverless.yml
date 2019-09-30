@@ -27,3 +27,9 @@ functions:
     handler: not.used
     package:
       artifact: build/libs/direct-invocation.jar
+
+  https-test:
+    runtime: provided
+    handler: not.used
+    package:
+      artifact: build/libs/https-test.jar
