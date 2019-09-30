@@ -25,8 +25,6 @@ public abstract class BaseRuntime<I, O> {
         conn.connect();
         conn.getOutputStream().write(contents.getBytes(StandardCharsets.UTF_8));
         conn.getOutputStream().close();
-        System.out.println(inputStreamToString(conn.getInputStream()));
-
     }
 
     protected String inputStreamToString(InputStream inputStream) throws IOException {
@@ -51,9 +49,7 @@ public abstract class BaseRuntime<I, O> {
         if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
             requestId = connection.getHeaderField("lambda-runtime-aws-request-id");
         } else {
-            System.out.println("Error getting next request");
-            System.out.println(inputStreamToString(connection.getErrorStream()));
-            throw new RuntimeException("Erorr getting next request");
+            throw new RuntimeException("Error getting next request");
         }
 
         InputStream is = connection.getInputStream();
