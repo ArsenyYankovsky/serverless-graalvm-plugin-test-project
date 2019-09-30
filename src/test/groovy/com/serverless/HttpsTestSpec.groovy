@@ -21,6 +21,6 @@ class HttpsTestSpec extends Specification {
         def responseString = new String(response.payload.array(), StandardCharsets.UTF_8)
 
         then:
-        responseString == "\"Hello direct invocation\""
+        responseString == "\"{\\\"message\\\":\\\"Go Serverless v1.x! Your function executed successfully!\\\"}\""
     }
 }
